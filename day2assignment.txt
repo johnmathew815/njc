@@ -1,0 +1,327 @@
+ASSIGNMENT
+---------
+
+DAY 2--8/5/2020
+
+----------
+
+
+Client-Server
+------------
+1-->Tell us about the features of client/server.
+
+A:  clients are basically the ones requesting for the data and the ones in demand--
+	and servers are the ones providing this data to the clients(or robot type programs that constantly run and exchange info with remote users)--
+	
+	@Client/server architecture is a producer/consumer computing architecture where the server acts as the producer and the client as a consumer.
+	
+	@the server can provide various services to the client on demand like application access,-- 
+	
+	
+	@Client/server architecture works when the client computer sends a resource or process request to the server--
+	over the network connection, which is then processed and delivered to the client. 
+	
+	@a server s/m can manage many clients as well as a single clinet client can be connceted to numerous systems
+	
+	@The client and server should follow a common communication protocol so they can easily interact with each other.
+	The most popular are the HTTP and HTTPS
+	
+	@ Mainly implemented and popular formats are done in XML and JSON.
+	 the server responds by sending a reply in a structure of formatted data, (usually XML or JSON).
+	
+	An example of a client server computing system is a web server.
+
+
+
+
+
+2-->What is a Web server in a client server environment?
+
+A:	Web server is a computer where the web content is stored. 
+	Basically web server is used to host the web sites but there exists other web servers also such as gaming, storage, FTP, email etc.
+
+
+	@When client sends request for a web page, 
+	the web server search for the requested page if requested page is found then it will send it to client with an HTTP response.
+	
+	@If the requested web page is not found, web server will the send an HTTP response:Error 404 Not found.
+	
+	@If client has requested for some other resources then the web server will contact to the application server 
+	and data store to construct the HTTP response.
+	
+	eg: apache,IIS
+	
+	
+
+
+
+
+3-->What is the role of the presentation layer
+
+A: 	presentation layer/tier creates views that users see--and receives i/p and displays o/p
+	
+	@The presentation tier is the front end layer in the 3-tier system and consists of the user interface. 
+	
+	@This user interface is often a graphical one accessible through a web browser or web-based application and which displays content 
+	and information useful to an end user. 
+	
+	@This tier is often built on web technologies such as HTML5, JavaScript, CSS, or through other popular web development frameworks,
+	and communicates with others layers through API calls.
+
+
+
+
+
+4-->They say this architecture is secure, how is it done in your opinion?
+
+A:	@3-tier architecture provides increased security, as security can be defined for each service, 
+	and at each level; increased performance, as tasks are shared between servers.
+	
+	@RDBMS provides a single point of access an governs whos is retrieving the data and how the data is updated
+	
+
+
+5-->What is a Database Server in a client server environment?
+
+A:  @The data tier comprises of the database/data storage system and data access layer. 
+
+	@Examples of such systems are MySQL, Oracle, PostgreSQL, Microsoft SQL Server, MongoDB, etc. 
+	
+	@Data is accessed by the application layer via API calls.
+	
+
+6-->What are Super servers in client server environments?
+
+A:	@super server is a server process, it monitors the arrival of a client request and starts the appropriate server service
+	
+	
+	@daemon is a prominent example of a super server for Unix systems.
+	
+
+	
+
+7-->Explain 2-Tier and 3-Tier architecture
+
+A:	2-Tier :2-tier architecture is used to describe client/server systems in which the client requests resources 
+			and the server responds directly to the request, using its own resources. 
+			This means that the server does not call on another application in order to provide part of the service
+			
+			
+	3-Tier :In 3-tier architecture, there is an intermediary level, meaning that the architecture is generally split up between:
+			a client, i.e. the computer, which requests the resources, equipped with a user interface		
+
+8-->What is a File server?
+
+A:	In the client/server model, a file server is a computer responsible for the central storage and management of data--
+	and that provides file systems or at least parts of a file system to connected clients--
+	Accessing the file server over the internet typically works with FTP--
+	
+
+SOA & MicroServices
+------------------
+1-->What are the main benefits of SOA?
+
+A: 	In SOA different systems can communicate with each other via a service bus between them--
+	as a result these systems nee dnot know about the other systems in the network--
+	in other words each system works independently--
+	
+	BENEFITS:
+	
+	@Creates reusable code:
+		By reusing code that already exists within a service, enterprises can significantly reduce the time that is spent during the development process.
+		
+	@promotes interaction:
+		With SOA, no longer will communication between platforms be hindered in operation by the languages on which they are built.--
+		Once a standardized communication protocol has been put in place, the platform systems and the varying languages can remain independent of each other,-- 
+		while still being able to transmit data between clients and services.
+		
+	@Allows for scalability:
+		By using an SOA where there is a standard communication protocol in place,-- 
+		enterprises can drastically reduce the level of interaction that is required between clients and services,-- 
+		and this reduction means that applications can be scaled without putting added pressure on the application,
+							
+
+
+2-->How can you achieve loose coupling in SOA
+
+
+A:	@SOA is a structure that allows services to communicate with each other across different platforms and languages by implementing--
+	what is known as a “loose coupling” system
+	
+	@The term “loose coupling” refers to the client of a service, and its ability to remain independent of the service that it requires.--
+	The most important part of this concept is that the client, which in itself can be a service,-- 
+	can communicate with the service even if they are not closely related.-- 
+	This facilitated communication is achieved through the implementation of a specified interface-- 
+	that is able to perform the necessary actions to allow for the transmission of data.
+	
+	@Loose coupling in SOA is how the services are implemented without impacting other services or application.--
+	The only interaction between the application and services is through the publish interfaces.
+
+
+
+
+
+
+
+
+3-->Are web services and SOA the same?
+
+A:	@NO.
+	
+	@SOA is an architecture that allows developers to combine multiple application services into a larger, composite service.--
+	
+	@SOA can be implemented using SOAP-based web services or REST APIs
+	
+	@however a web service is implemented using specific protocols.
+	
+	@Web services are software systems designed to support interoperable machine-to-machine interaction over a network.--
+	This interoperability is gained through a set of XML-based open standards, such as WSDL, SOAP, and UDDI.--
+	These standards provide a common approach for defining, publishing, and using web services.
+
+
+
+
+
+4-->What is a reusable service?
+
+A:	@in soa various services are deployed and these sevices can be used by other s/m irrespective of their platform--
+	these are called reusable services
+	
+	
+
+5-->What are the disadvantages of SOA?
+
+A:	@High investment: A huge initial investment is required for SOA.
+	
+	@High Bandwidth Server is required
+	
+	@Extra overload:
+	In SOA, all inputs are validated before it is sent to the service.--
+	If you are using multiple services then it will overload your system with extra computation.
+	
+	
+	
+
+6-->What is ESB and where does it fit in?
+
+
+A:	@An Enterprise Service Bus (ESB) is fundamentally an architecture. 
+	It is a set of rules and principles for integrating numerous applications together over a bus-like infrastructure.
+	
+	@The core concept of the ESB architecture is that you integrate different applications by putting a communication bus between them--
+	and then enable each application to talk to the bus. This decouples systems from each other, allowing them to communicate without dependency on-- 
+	or knowledge of other systems on the bus.-- 
+	The concept of ESB was born out of the need to move away from point-to-point integration, which becomes brittle and hard to manage over time.--
+	
+	@ESB forms he backbone of SOA to form the architecture.
+
+
+7-->In SOA do we need to build a system from scratch?
+
+
+A:	NO we don't have to build a s/m from the scratch--
+	we can use already exposed services in the architecture or n/w and reuse them according to out need--
+	by this point loose coupling and also the major point of service reusability..
+
+
+
+8-->What is the most important skill needed to adopt SOA ?technical or cultural?
+
+A: @SOA does need people to think technically and culturally and the most importand one is the cultural aspects---
+   @instead of thinking technology first employees must first think in terms of business functions, or services--
+
+
+9-->List down the advantages of Microservices Architecture.
+
+A:	@Microservice architecture gives developers the freedom to independently develop and deploy services
+	@A microservice can be developed by a fairly small team
+	@Easy to scale and integrate with third-party services
+	@Reusability Across Business
+
+
+10-->What are the best practices to design Microservices?
+
+A:	@Create a Separate Data Store for Each Microservice
+
+	@Keep Code at a Similar Level of Maturity:
+		if you need to add or rewrite some of the code in a deployed microservice that’s working well, 
+		the best approach is usually to create a new microservice for the new or changed code, leaving the existing microservice in place.
+		This way you can iteratively deploy and test the new code until it is bug free and maximally efficient
+		
+	@Deploy in Containers:
+		deploying microservices in containers is important because it means you just need just one tool to deploy everything
+		
+	
+
+
+11-->How does Microservice Architecture work?
+
+A:	@a monolith application is built as a single, autonomous unit. This make changes to the application slow as it affects the entire system.
+
+	@Microservices help build an application as a suite of small services, each running in its own process and are independently deployable.-- 
+	These services may be written in different programming languages and may use different data storage techniques.-- 
+	While this results in the development of systems that are scalable and flexible, it needs a dynamic makeover. Microservices are often connecta via APIs
+	
+	@In Microservice Architecture, each service is self-contained and implements a single business capability.
+	
+
+12-->What are the pros and cons of Microservice Architecture?
+
+A:	ADVANTAGES:
+
+
+	@Microservice architecture gives developers the freedom to independently develop and deploy services
+	@A microservice can be developed by a fairly small team
+	@Easy to scale and integrate with third-party services
+	@Reusability Across Business
+	
+	
+	DISADVANTAGES:
+	
+	@When number of services increases, integration and managing whole products can become complicated
+	@Developers have to put additional effort into implementing the mechanism of communication between the services
+	@The architecture brings additional complexity as the developers have to mitigate fault tolerance, 
+	network latency, and deal with a variety of message formats as well as load balancing
+
+
+13-->what is the difference between monolithic, soa and microservices architecture?
+
+A:	@Monolithic is similar to a big container wherein all the software components of an application are assembled together and tightly packaged.
+	
+	@A Service-Oriented Architecture is essentially a collection of services. 
+	These services communicate with each other. 
+	The communication can involve either simple data passing or it could involve two or more services coordinating some activity. 
+	Some means of connecting services to each other is needed.
+	
+	@Microservices, aka Microservice Architecture, 
+	is an architectural style that structures an application as a collection of small autonomous services, modeled around a business domain.
+		
+
+14-->What are the challenges you face while working Microservice Architectures?
+
+A:  @Managing Microservices:
+		As the number of microservices increases, managing them gets more challenging. It is important that management is planned
+		
+	@Testing:
+		Testing is much more complex in a microservices environment due to the different services
+		
+	@Embracing DevOps Culture:
+		A lack of DevOps culture can bottle up releases and impact the overall time to market and the response to business requests and issues.
+			
+	
+
+
+15-->What are the characteristics of Microservices?
+
+A: @Multiple Components:
+	each of these services can be deployed, tweaked, and then redeployed independently without compromising the integrity of an application
+	
+   @Built For Business:
+   microservice architecture utilizes cross-functional teams.  
+   The responsibilities of each team are to make specific products based on one or more individual services communicating via message bus. 
+	
+   @Agility : 
+   Microservices support agile development. Any new feature can be quickly developed and discarded again
+   
+   @Decoupling:
+   Services within a system are largely decoupled. So the application as a whole can be easily built, altered, and scaled

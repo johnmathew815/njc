@@ -1,0 +1,455 @@
+
+ASSIGNMENT
+---------
+
+DAY 3--12/5/2020
+
+
+------------------------------
+HTTP Fundamentals
+------------------------------
+
+ 
+1-->What are the basic Features of HTTP?
+
+A:
+@HTTP is connectionless:(this is also related to stateless characteristic)
+	The HTTP client, i.e., a browser initiates an HTTP request and after a request is made, 
+	the client waits for the response. The server processes the request and sends a response back after which client disconnect the connection. 
+	So client and server knows about each other during current request and response only. Further requests are made on new connection like client and server are new to each other.
+	
+@HTTP is media independent:
+	any type of data can be sent by HTTP as long as both the client and the server know how to handle the data content. 
+	It is required for the client as well as the server to specify the content type using appropriate MIME-type.
+	
+@HTTP is stateless: 
+	As mentioned above, HTTP is connectionless and it is a direct result of HTTP being a stateless protocol. 
+	The server and client are aware of each other only during a current request. 
+	Afterwards, both of them forget about each other. Due to this nature of the protocol, 
+	neither the client nor the browser can retain information between different requests across the web pages.
+
+
+
+2-->What are request methods in HTTP?
+
+A:	GET: it is used to retrieve some data from the server end
+	
+	POST: it is used to add/submit some data to the server end
+	
+	PUT: it is sued to completely replace a data/resource
+	
+	PATCH: it is used to partially replace a resource
+	
+	DELETE: it is used to delete a resource from the server
+
+
+3-->What are the differences between GET and POST methods?
+
+		GET: it is used to retrieve some data from the server end--
+			 In case of Get request, only limited amount of data can be sent because data is sent in header.	
+
+		
+		POST: it is used to add/submit some data to the server end
+
+				In case of post request, large amount of data can be sent because data is sent in body.
+				
+
+				
+
+4-->What is status code in HTTP?
+
+A:		200: OK
+		201: created
+		400: bad request	
+		401: unauthorized
+		404: resource not found
+		500: server error
+		
+		
+
+
+
+
+
+
+
+5-->What are the header fields in HTTP?
+
+A:	HTTP Request Header:
+		The request header field allows clients to additionally pass request information and client information to the server.
+
+	HTTP Response Header:
+		The response header field allows the server to pass additional information through the responses other than simple Status-Line response.
+
+	Entity Header: 
+		This type of headers contains the information about the body of the resources like MIME type, Content-length.
+
+	General Header: 
+		This type of headers applied on Request and Response headers both but with out affecting the database body. (doubt?)(what exactly is this?)
+
+
+
+
+
+
+6-->What is URI?
+
+A:	Similar to URL, URI (Uniform Resource Identifier) is also a string of characters that identifies a resource on the web either by using location, name or both. 
+	It allows uniform identification of the resources. A URI is additionally grouped as a locator, a name or both which suggests it can 
+	
+	
+
+
+
+
+
+7-->What are Idempotent methods and why do we call them?
+
+A:	these methods are the ones that doesn't make any changes or modifications to the resourceseve if they're called multiple times--
+	eg:GET,PUT,PATCH,DELETE
+
+8-->Explain HTTP Request & Response Messages
+
+A:	@client sends an HTTP request to a server in the form of a request message which includes following format:
+	
+	Request-Line,Request Method,Request-URI,Request Header Fields
+
+	@After receiving and interpreting a request message, a server responds with an HTTP response message:
+	
+	Message Status-Line,HTTP Version,Status Code,Response Header Fields
+
+
+
+
+
+
+
+
+9-->What is Session State in HTTP?
+
+A:	HTTP sessions is a feature that allows Web servers to maintain user identity and to store user-specific data during--
+		multiple request/response interactions between a client application and a Web application. HTTP sessions preserves:
+
+		@Information about the session itself (session identifier, creation time, time last accessed, etc.)
+		@Contextual information about the user (client login state, for example, plus whatever else the Web application needs to save)
+
+
+
+10-->What is HTTPS?
+
+
+A:	Hypertext transfer protocol secure (HTTPS) is the secure version of HTTP,--
+	which is the primary protocol used to send data between a web browser and a website.-- 
+	HTTPS is encrypted in order to increase security of data transfer.--
+	This is particularly important when users transmit sensitive data, such as by logging into a bank account, email service, or health insurance provider.
+
+
+
+
+--------------------------
+Introduction to API
+--------------------------
+ 
+1-->Explain REST and RESTFUL?
+
+A:	rest : @REST is an acronym for Representational State Transfer
+		   @is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other	
+		   @
+	restful :RESTful is typically used to refer to web services implementing such an architecture.
+
+
+
+
+2-->Mention what are the HTTP methods supported by REST?
+
+A: GET,POST,PUT,PATCH, DELETE 
+	supports these methods for the CRUD operations
+
+
+
+3-->Explain the architectural style for creating web API?
+
+A:	@REST-like API Style: REST is designed to make optimal use of an HTTP-based infrastructure and due to the success of the web, 
+						HTTP-based infrastructures, such as servers, caches, and proxies, are widely available. 
+							The web, which is based on HTTP, provides some proof for an architecture that not only scales extremely well but also has longevity. 
+							The basic idea of REST is to transfer the ideas that worked well for the web and apply them to web services.
+	
+	@GraphQL API Style:	GraphQL is a data fetching language that allows clients to declaratively describe their data requirements with a JSON-like format. 
+						In this respect, it is comparable to SQL. Furthermore, GraphQL is database agnostic. Its design allows you to deal with any kind of database
+
+
+
+4-->Explain the RESTFul Web Service?
+
+A:	@Restful Web Service is a lightweight, maintainable, and scalable service that is built on the REST architecture. 
+	Restful Web Service, expose API from your application in a secure, uniform, stateless manner to the calling client. 
+	The calling client can perform predefined operations using the Restful service. The underlying protocol for REST is HTTP. REST stands for REpresentational State Transfer.
+
+
+
+5-->Explain what is a “Resource” in REST?
+
+A:  @REST architecture treats every content as a resource. 
+	@These resources can be Text Files, Html Pages, Images, Videos or Dynamic Business Data. 
+	@REST Server simply provides access to resources and REST client accesses and modifies the resources. 
+	@Here each resource is identified by URIs/ Global IDs. REST uses various representations to represent a resource where Text, JSON, XML. 
+	@The most popular representations of resources are XML and JSO
+
+
+
+6-->Which protocol is used by RESTful web services?
+
+A: HTTP protocol. This serves as a medium of data communication between client and server. HTTP standard methods are used to access resources in RESTful web service architecture.
+
+
+
+
+7-->What is messaging in RESTful web services?
+
+A:	Messages are the mode of exchanging data for any type of communication to take place. 
+	In the same way, HTTP protocol plays the role of message communication between the client and server through HTTP Request and Response methods. 
+	HTTP request is sent by the client who contains information about the data and in turn, receives HTTP Response from the server.
+
+
+8-->State the core components of an HTTP Request?
+
+A:	@method: Includes methods like GET, PUT, POST, etc.
+	@Uniform Resource Identifier for identifying the resources available on the server.
+	@HTTP Version for specifying the HTTP version.
+	@HTTP Request header for containing the information about the data.
+	@HTTP Request body that contains the representation of the resources in use.
+
+
+
+
+9-->State the core components of an HTTP response?
+
+A:	@Request Code: This contains various codes that determine the status of the server response.
+	@HTTP Version for specifying the HTTP version.
+	@HTTP Response header for containing the information about the data.
+	@HTTP Response body that contains the representation of the resources in use.
+
+
+
+
+10-->What do you understand about payload in RESTFul web service?
+
+A:	@The request data which is present in the body part of every HTTP message is referred to as ‘Payload’.  
+
+	@In Restful web service, the payload can only be passed to the recipient through the POST method.
+
+	@There is no limit of sending data as payload through the POST method but the only concern is that more data will consume more time and bandwidth. 
+	This may consume much of the user’s time also.
+
+
+
+
+
+11-->Explain the caching mechanism?
+
+A:	In computing, cache is a widely used method for storing information so that it can be later accessed much more quickly.
+
+	@ When a caching mechanism is in place, it helps improve delivery speed by storing a copy of the asset you requested 
+	and later accessing the cached copy instead of the original.
+	
+	@A web page request is made for an asset, such as https://www.example.com/css/style.css, from the origin server.---
+	The cache is checked first to see if the asset already exists (in the case of a webpage, the cache could pertain to the browser cache, CDN, web proxy, etc).--
+	If there is not a copy of the requested file stored in cache, this will result in a cache miss and the file will be retrieved from its original source.--
+	Otherwise, if the file is stored in cache, this results in a cache hit response and the asset is delivered from cache.--
+	Once the file is cached, it will continue to be delivered from cache until it expires or the cache is cleared / purged.--
+
+
+
+12-->List the main differences between SOAP and REST?
+
+A:	@SOAP is a protocol which was designed before REST and came into the picture. 
+	The main idea behind designing SOAP was to ensure that programs built on different platforms and programming languages could exchange data in an easy manner.
+		
+	REST is an Architectural style in which a web service can only be treated as a RESTful service if it follows the constraints of being Client Server,
+	Stateless,Cacheable,Layered System,Uniform Interface	
+	
+	@SOAP cannot make use of REST since SOAP is a protocol and REST is an architectural pattern.
+	 REST can make use of SOAP as the underlying protocol for web services, because in the end it is just an architectural pattern.
+	
+	@SOAP requires more bandwidth for its usage and REST does not need much bandwidth when requests are sent to the server.
+	
+	@SOAP can only work with XML format and REST permits different data format such as Plain text, HTML, XML, JSON, etc. But the most preferred format for transferring data is JSON.
+
+
+
+
+13-->Enlist advantages and disadvantages of ‘Statelessness’.
+
+A:  Adv:
+
+	@As the server does not need to manage any session, deploying the services to any number of servers is possible, and so scalability will never be a problem
+	@Less complexity
+    @The server never loses track of “where” each client is in the application because the client sends all necessary information with each request.
+
+	Dis:
+	
+	@they will not keep information about a particular user session
+	@A disadvantage of statelessness is that it may be necessary to include additional information in every request, 
+	and this extra information will need to be interpreted by the server.
+
+
+-------------------------------------------------------------
+Object Oriented Programming Fundamentals
+-------------------------------------------------------------
+
+
+1-->What is the main difference between a class and an object?
+
+A: @an object is a real world entity with some properties and task
+   a class is a blueprint that the object follows.
+   
+   @Object allocates memory when it is created whereas a class doesn'take
+
+   @Object is created many times as per requirement and Class is declared once.
+
+   @Object is a physical entity and class is a logical entity
+   
+   
+   
+
+2-->What is Encapsulation? Explain with a used case
+
+A:  @the wraping up of data nd function into a single unit is called as encapsulation.
+
+	@In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class. 
+	Therefore, it is also known as data hiding.
+	
+	@We can create a fully encapsulated class in Java by making all the data members of the class private and writing public methods in the class to set and get the values of variables.
+	
+    @for eg a the variable and functions are together encapsulated to form the class
+	
+
+
+3-->What is Polymorphism? Explain with a used case
+
+A: @The ability of an object to behave in more than one form is called as polymorphism.
+    
+   @There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism
+
+   @ and polymorphism is achieved in java using method overloading and overriding
+   
+   @eg : A person at the same time can have different characteristic. Like a man at the same time is a father, a husband, an employee. 
+   So the same person posses different behaviour in different situations
+
+
+
+4-->Explain Overriding & Overloading and its advantages
+
+A: @it occurs when a derived class has a definition for one of the member functions of the base class. That base function is said to be overridden.
+
+   @When there are multiple functions with same name but different parameters then these functions are said to be overloaded
+   
+   adv:
+	@ we can achieve clean code
+	@Overloaded methods give programmers the flexibility to call a similar method for different types of data
+	
+   adv:
+	@Provides multiple implementation of same method and can invoke parent class overridden method using super keyword
+
+
+5-->What is Inheritance and different types of inheritance? Explain with a used case
+
+
+A: @the ability of a class to acquire the characteristics and behaviour of another class is called as inheritance.
+
+   @Single Inheritance: When a class inherits another class, it is known as a single inheritance. 
+						for example , Dog class inherits the Animal class, so there is the single inheritance.	
+						
+   @multilevel: When there is a chain of inheritance, it is known as multilevel inheritance
+   
+   @hierarchical: When two or more classes inherits a single class, it is known as hierarchical inheritance.
+
+
+
+   
+6-->What is an abstract class?
+	
+A: 	@Abstraction is a process of hiding the implementation details and showing only functionality to the user.
+
+	@A class which is declared with the abstract keyword is known as an abstract class in Java. It can have abstract and non-abstract methods
+
+	
+7-->What is an interface and how multiple inheritance is achieved with this
+
+A:	@An interface contains variables and methods like a class but the methods in an interface are abstract by default unlike a class. 
+	Multiple inheritance by interface occurs if a class implements multiple interfaces or also if an interface itself extends multiple interfaces.
+	
+	@The aim of inheritance is to provide the reusability of code so that a class has to write only the unique features and rest of the common properties 
+	and functionalities can be extended from the another class.
+
+8-->What are the access modifiers?
+
+A: @The access modifiers in Java specifies the accessibility or scope of a field, method, constructor, or class.
+   
+   @Private: The access level of a private modifier is only within the class. It cannot be accessed from outside the class.
+   @Default: The access level of a default modifier is only within the package. It cannot be accessed from outside the package. 
+			 If you do not specify any access level, it will be the default.
+   @Protected: The access level of a protected modifier is within the package and outside the package through child class. 
+			   If you do not make the child class, it cannot be accessed from outside the package.
+   @Public: The access level of a public modifier is everywhere. It can be accessed from within the class, outside the class, within the package and outside the package.
+
+
+
+9-->What are the various types of constructors?
+
+A: @Constructor is a block of code that initializes the newly created object. 
+	A constructor resembles an instance method in java but it’s not a method as it doesn’t have a return type.
+
+   @Default constructor: If you do not implement any constructor in your class, Java compiler inserts a default constructor into your code on your behalf. 
+	This constructor is known as default constructor.
+	
+   @Parameterized constructor: A Constructor with arguments(or you can say parameters) is known as Parameterized constructor
+
+10-->What is ‘this’ pointer?
+
+A: @‘this’ is a reference variable that refers to the current object.
+   @ The most common use of the this keyword is to eliminate the confusion between class attributes and parameters with the same name	
+
+
+11-->What is static and dynamic Binding?
+
+A:	@When type of the object is determined at compiled time it is known as static binding.
+	@and when found during run time then it is called as dynamic binding
+
+
+12-->How many instances can be created for an abstract class and why?
+
+A:  No youcan not create an instance of an ABSTRACT class. 
+	This class is only used to provide structure to the program. 
+	Using an ABSTRACT class ensures that you will use inheritance which is the basic of object oriented programing.
+	Though you can create a reference of an ABSTRACT class which can store the object of the derived class.
+
+13-->Which OOPS concept is used as a reuse mechanism and explain with a use case
+
+A: @inheritance is used as a reuse mechanism.
+
+   @whenever there is an already defined class with the properties and charcteristics which is wanted by another class			
+	then this class can be inherited to get its properties
+	
+   @For example, a child inherits the traits of his/her parents.	
+
+14-->Please identify one practical scenario for each pillar of OOPs.
+
+A: 	encapsulation: When you log into your email accounts such as Gmail, Yahoo Mail, or Rediff mail, 
+	there is a lot of internal processes taking place in the backend and you have no control over it.
+	When you enter the password for logging, they are retrieved in an encrypted form and verified and then you are given access to your account. 
+	You do not have control over it that how the password has been verified. Thus, it keeps our account safe from being misused.
+
+   inheritance: The real life example of inheritance is child and parents, all the properties of father are inherited by his son.
+
+
+
+   abstraction: For example, TV remote is an object. Users are provided with only interface which is nothing but keys. 
+				Users only know which key to press for what function. User will not know what happens inside when we press the key
+
+   polymorphism: Consider your Mobile phone. You can save your Contacts in it. Now suppose you want to save 2 numbers for one person. 
+				 You can do it by saving the second number under the same name.	
+
+
+
+

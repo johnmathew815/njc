@@ -1,0 +1,191 @@
+ASSIGNMENT
+---------
+
+DAY 1--7/5/2020
+
+----------
+
+
+1) Explain SDLC at a high level
+
+A: The various stages in the software development is referred to as SDLC.
+
+they are: 
+
+planning  or requirement analysis  : is one of the most important phase--product owner gets to interact with the clients and plans the variosu aspects of the project--
+various aspects like eho will be the end user and what really is gonna be the product are all planned in this stage--
+initial risk identifications are also done in this stage. 
+
+design : deigns are made i.e logical design(how the general components fit together) or physical design(like DB schemas) adn these desiigns will be reviewed
+ 
+coding : anothet imp stage--real building of s/w starts here--codind is done that build the core of the s/w
+
+testing : its the stage where the s/w is tested. Various tests like unit,integration, load test(makes sure that the s/m can take laods) etc are done in this phase.
+
+deployment: s/w is actually released to the production env for users to use them.
+
+maintenancece : maintenenance after deloyment of the s/w--patching of s/w is also done
+
+
+
+2) What is waterfall and why it is still relevant
+
+A:   its a s/w development model that is linear and sequential--
+	 various stages are: req gathering, designing, coding , testing,deployment and maintenance--
+	  any phase in the development process begins only if the previous phase is complete--
+	  
+	  it is relevant when :
+	  
+	  @ Requirements are very well documented, clear and fixed.
+	  @ Technology is understood and is not dynamic.
+	  @ There are no ambiguous requirements.
+	  
+	 advantages:
+
+		@ Simple and easy to understand and use
+		@ Phases are processed and completed one at a time.
+		@ Works well for smaller projects where requirements are very well understood.
+
+	 disadvan:
+	 
+		@ Cannot accommodate changing requirements.
+		@ Not a good model for complex projects.
+		@ No working software is produced until late during the life cycle.
+		@ time to market is vey less
+
+
+
+
+
+
+3) Explain Agile Model with a use case and the role of SCRUM in that
+
+
+A:		its an iterative based s/w development model-- every iteration contains the stages of waterfall model--
+		 during each iteration a small end result of the entire software is released until the final iteration with complete release--
+		 feedback is also gathered from the client at the end of each iteration--
+
+		use case: lets take the example of a messaging app say, telegarm--a small version of it is released in the first iteration followed by--
+		other features in the second iterationa and so on until complete app or s/w is developed
+		
+		can be implemented using scrum, kanban, XP(xtreme programming)
+		
+		
+		
+
+
+
+4) Who is Scrum Master
+
+A:    One of the main member in the scrum team--who manages everything--
+	  clears obstacles--so that the team can work effectively--
+	  ensuring good relationship b/w the team and the product owner--
+	  addressing team dynamics
+	  
+
+	scrum board: story(entire backlog)->to do->in progress->to verify->Done(the working part of the s/w)
+	
+
+
+5) Differentiate between Product/Sprint Backlog
+
+
+A:  in a scrum product backlog is the entire product requirement that has to be worked on--
+	since scrum works in sprints, sprint are created and delivered after every period of time--
+	say, a small part from the product  backlog is taken and bamed as the first sprint and this is then worked on
+	followed by the next sprint and if the previous sprint isn't completed within the estimated time then that one--
+	alos gets added to the current sprint being worked on!
+	
+	Sprint: A sprint is a short, time-boxed period when a scrum team works to complete a set amount of work--
+	Sprints are at the very heart of scrum and agile methodologies--
+	and getting sprints right will help your agile team ship better software with fewer headaches.  
+	
+
+
+6) What is Epic & Story
+
+A:	An Epic can be defined as a big chunk of work that has one common objective. 
+	It could be a feature, customer request or business requirement--
+	stories are small parts of the epic which are actually broken down from epic--
+	The stories tell the arc of the work completed while the epic shares a high-level view of the unifying objective.
+
+
+
+7) What is called Velocity in SCRUM
+
+A: It is the amout of work a team can do during a single sprint--
+	it is calculated at the end of the sprint by totalling the points for completed user stories.--
+	
+	It is an indication of the average amount of Product Backlog turned--	 
+	into an Increment of product during a Sprint by a Scrum Team, tracked by the Development Team
+	
+	
+
+
+8) Explain the SCRUM ceremonies
+
+A:  Sprint: already discussed in Q5
+
+
+	Sprint Planning : the work to be performed in the Sprint is planned at the Sprint Planning. 
+	This plan is created by the collaborative work of the entire Scrum Team.
+	
+	Daily Scrum: it is a 15 min daily stand up meeting that is done to talk about the next plans and objectives to be done in the--
+	next 24 hours--scrum manager manages the meeting in here
+	
+	Sprint Review : in sprint review different topics and features about the completed sprint is discussed
+	
+	Sprint Retrospective : here the team talks about the completed sprint and the improvements that can be made in the upcoming sprint
+
+
+9) What is grooming
+
+A:	Grooming (or refinement) is a meeting of the Scrum team in which the product backlog items are discussed and the next sprint planning is prepared.--
+		ensure the backlog contains the appropriate items, that they are prioritized, and that the items at the top of the backlog are ready for delivery.--
+		This activity occurs on a regular basis and may be an officially scheduled meeting or an ongoing activity.--
+
+
+
+10) How Jira board is effective in SCRUM
+
+A:	Jira is a tool used for bug tracking, issue tracking, and project management--
+	jira board contains the info about the current sprint and its features--
+	this helps in effective communication b/w the team members--
+	it also enriches the upcoming sprint planning--
+	improves team focus
+	
+
+
+11) Differentiate between SCRUM & Waterfall
+
+A: 
+
+	SCRUM: it is the methodology with which agile model is implemented--
+	various steps in scrum are product backlog--sprint planning--
+	sprint backlog--then the implementation of the sprint along with scrum meetup--
+	sprint review and then the increment part--after all this a sprint retrospective is also carried out
+	
+	product backlog conatins the entire product requirement in it and from this a part that could be potentially deployable--
+	is taken to the sprint backlog and worked on for delivery--the sprint backlog is implemented by the scrum team that consists of cross-functional members--
+	scrum master also plays a major role by managing and organising everything--after the completion of this the sprint is taken for review--
+	various faetures of the sprint is discussed--and the increment is given(i.e a potentially deployable product)--
+	followed by the sprint retrospective in which the comments are made about the currently completed sprint and also what could be made better in the upcoming sprint etc.
+	
+	waterfall:
+		@When the requirements from the product are clear and have a picture of the result.
+		@The customer is very clear, and requirements are well defined and understood, does not require changes.
+		
+	scrum:
+		@when the client specifications aren't clear	
+		@When the freedom to take a decision is needed by the developer and the stakeholders. 
+		Options are provided to them so that they can take decisions independently. No fear of failure
+	
+12) Explain the responsibilities of Product Owner
+
+A:  it is the person that represents the firm and talks to the client--
+	he creates the product backlog--
+	 is responsible for maximizing the value of the product--
+	also makes sure that the development team understands the product backlog clearly
+	
+	
+

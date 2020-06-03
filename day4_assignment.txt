@@ -1,0 +1,433 @@
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Unit Testing & JUnit
+-------------------------------------------------------------------------------------------------------------
+
+
+1-->What is unit testing?
+
+A:	@Unit testing, a testing technique using which individual modules are tested to determine if there are any issues by the developer himself. 
+	It is concerned with functional correctness of the standalone modules
+	
+	@The main aim is to isolate each unit of the system to identify, analyze and fix the defects.
+
+	@Black Box Testing, White Box Testing, Gray Box Testing are the techniques of unit testingg
+
+2-->What is the difference between manual testing and automated testing?
+
+A:	@With traditional manual testing, the testers manually look out for the defects in the software by following a written test plan consisting of sets of various test cases. 
+	It requires the tester to step into the shoes of a user and analyze the behavior of the website or mobile app, 
+	whether it is functionally in sync or does it deliver a different and often an erroneous behavior than expected.
+	
+	@Automation testing uses frameworks to run tests. Each framework is scripted with the rules of automation pertaining to the software to be tested. This framework is integrated with the various components like
+		function libraries,
+		test data sources,
+		object details
+		other reusable modules
+	
+	
+3-->Is it necessary to write the test case for every logic? If yes, why
+
+A: 	No. It is mostly written for logics that are prone to fauilure!
+	However writing test cases for all makes it more efficient.
+
+
+4-->What are the features of JUnit?
+
+A: 	@JUnit is an open source framework, which is used for writing and running tests.
+	@JUnit is elegantly simple. It is less complex and takes less time.
+	@Provides assertions for testing expected results.
+	@Provides annotations to identify test methods.
+	@JUnit tests can be organized into test suites containing test cases and even other test suites.
+	
+5-->What are the important JUnit annotations? And its usage in coding
+
+A:	@Test: indicates that public void method to which it is attached can be executed as a test Case
+	@Before: used to execute some statement such as preconditions before each test case
+	@Ignores :used to ignore some statements during test execution 
+	@After:  used to execute some statements after each Test Case for e.g resetting variables, deleting temporary files ,variables.
+
+6-->What does Assert class?
+
+A: @Assert is a method useful in determining Pass or Fail status of a test case,
+   @The assert methods are provided by the class org.junit.Assert which extends java.lang.Object class
+   @Boolean,Null object,IdenticalAssert Equals are some of the junit assert methods
+	
+
+7-->What is Code Coverage?
+
+A: @Code coverage is a software testing metric that determines the number of lines of code that is successfully validated under a test procedure, which in turn, 
+	helps in analyzing how comprehensively a software is verified.
+	
+   @measured as: Code Coverage Percentage = (Number of lines of code executed by a testing algorithm/Total number of lines of code in a system component) * 100.	
+
+
+8-->What are the best practices to perform Unit Testing?
+
+A: @Arrange, Act, Assert
+   @One Assert Per Test Method
+   @ Avoid Test Interdependence
+   @Keep It Short, Sweet, and Visible
+
+9-->What is Mocking?
+
+A: @Mocking is a process used in unit testing when the unit being tested has external dependencies. 
+   @The purpose of mocking is to isolate and focus on the code being tested and not on the behavior or state of external dependencies. 
+   @In mocking, the dependencies are replaced by closely controlled replacements objects that simulate the behavior of the real ones. 
+   @There are three main possible types of replacement objects - fakes, stubs and mocks.
+   @Mocking frameworks are used to generate replacement objects like Stubs and Mocks. 
+   @Mocking frameworks complement unit testing frameworks by isolating dependencies but are not substitutes for unit testing frameworks
+
+
+
+-------------------------------------------------------------------------------------------------------------
+GIT
+-------------------------------------------------------------------------------------------------------------
+
+1-->What is GIT and its significance in SDLC
+
+A: @Git is a version control system that is widely used in the programming world. It is used for tracking changes in the source code during software development
+   @Git is a speedy and efficient distributed VCS tool that can handle projects of any size, from small to very large ones. Git provides cheap local branching, convenient staging areas, and multiple workflows
+   @It : 	Track Changes – Changes can be tracked as someone making a change leaves a commit message about it.
+			Backup and Restore – It helps to maintain the source code backup.
+			Collaboration - It enables software team to collaborate with each other.
+			Branching and Merging – Changes are made on a branch and after being approved, they can be merged with the master branch. You can see who changed the file and what parts of the content are changed.
+			Deployment - It deploys the source code on the server with only one command.
+
+2-->What is the difference between GIT and SVN?
+
+A: @SVN allows you to check out sub-trees (or branches) only whereas Git requires you to check out the entire repository as a unit
+   @Git may have more difficulty compressing and storing binary files, while SVN doesn’t as much
+   @Branching and merging support are also thought to be superior with Git
+   @Git is also a bit newer than SVN
+
+3-->What are the advantages of using GIT?
+
+A:	@Distributed model
+	@Branching and merging are easy
+	@Workflow is flexible
+	@Excellent support for parallel development, support for hundreds of parallel branches
+	
+4-->What is “Staging Area” or “Index” in GIT?
+
+A:	@The working area is where files that are not handled by git. These files are also referred to as "untracked files." 
+	Staging area is files that are going to be a part of the next commit, which lets git know what changes in the file are going to occur for the next commit
+
+	@The Git index is used as a staging area between your working directory and your repository. 
+	You can use the index to build up a set of changes that you want to commit together. 
+	When you create a commit, what is committed is what is currently in the index, not what is in your working directory
+	
+	
+
+5-->What is GIT stash?
+
+A: @git stash temporarily shelves (or stashes) changes you've made to your working copy so you can work on something else, and then come back and re-apply them later on
+   @The git stash command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy
+   
+   @ eg: $ git status
+			On branch master
+			Changes to be committed:
+			new file: style.css
+			Changes not staged for commit:
+			modified: index.html
+			$ git stash
+			Saved working directory and index state WIP on master: 5002d47 our new homepage
+			HEAD is now at 5002d47 our new homepage
+			$ git status
+			On branch master
+			nothing to commit, working tree clean
+			
+6-->What is the function of git clone?
+
+A:	@Cloning is a process of creating an identical copy of a Git Remote Repository to the local machine.
+	@When we clone a repository, all the files are downloaded to the local machine but the remote git repository remains unchanged. 
+	Making changes and committing them on your local repository (cloned repository) will not affect the remote repository that you cloned in any way. 
+	These changes made on the local machine can be synced with the remote repository anytime the user wants.
+	
+	
+7-->How can we create a repository in Git?
+
+A: @new repo from scratch:	
+		Create a directory to contain the project.
+		Go into the new directory.
+		Type git init.
+		Write some code.
+		Type git add to add the files (see the typical use page).
+		Type git commit.
+		
+  @Connect it to github:
+		Go to github.
+		Log in to your account.
+		Click the new repository button in the top-right. You’ll have an option there to initialize the repository with a README file, but I don’t.
+		Click the “Create repository” button.
+
+8-->What is the purpose of branching in GIT?
+
+A:	@A branch is nothing but a pointer to the latest commit in the Git repository
+	@Multiple branches are needed to support multiple parallel developments
+	
+
+9-->What is the difference between ‘git remote’ and ‘git clone’?
+
+A: 	@git remote add just creates an entry in your git config that specifies a name for a particular URL. You must have an existing git repo to use this.
+	@git clone creates a new git repository by copying an existing one located at the URI you specify.
+	
+10-->What is the function of ‘git diff ’ in git?
+
+A:	@The git diff is a multi-function Git command, which is used to compare changes committed in Git. 
+	@Particularly, with the help of this command, you can take two input data sets and output the modifications between them. 
+	@While executing, this command runs a diff function on Git data source
+	@Diff command takes two inputs and reflects the differences between them. It is not necessary that these inputs are files only
+
+
+11-->Explain what the commit message is?
+
+A:	@The commit command is used to save changes to a local repository after staging in Git. 
+	@However, before you can save changes in Git, you have to tell Git which changes you want to save as you might have made tons of edits. 
+	@A great way to do that is by adding a commit message to identify your changes.
+
+12-->Why is it advisable to create an additional commit rather than amending an existing commit?
+
+A:	@Git amend internally creates a new commit and replaces the old commit. 
+	@If commits have already been pushed to central repository, it should not be used to modify the previous commits.
+	@It should be generally used for only amending the git comment.
+
+13-->What is Rebasing
+
+A:	@Rebasing is the process of moving or combining a sequence of commits to a new base commit. 
+	@Rebasing is most useful and easily visualized in the context of a feature branching workflow.
+	@From a content perspective, rebasing is changing the base of your branch from one commit to another making it appear as if you'd created your branch from a different commit. 
+	@Internally, Git accomplishes this by creating new commits and applying them to the specified base. 
+	@It's very important to understand that even though the branch looks the same, it's composed of entirely new commits
+
+
+-------------------------------------------------------------------------------------------------------------
+Maven Fundamentals
+-------------------------------------------------------------------------------------------------------------
+
+1--> Explain what is Maven? How does it work?
+
+A: @Maven is a popular open source build tool for enterprise Java projects
+   @Maven is developed in Java, and is thus historically used more for Java projects.
+   @is a tool that automates everything related to building the software project
+   @Maven is centered around the concept of POM files (Project Object Model). 
+   A POM file is an XML representation of project resources like source code, test code, dependencies (external JARs used) etc. 
+   The POM contains references to all of these resources.	
+
+2-->Explain what is POM and its significance
+
+A: @POM file (Project Object Model) is an XML file that describe the resources of the project. 
+	This includes the directories where the source code, test source etc. is located in, what external dependencies (JAR files) we projects has etc.
+	
+   @The POM file describes what to build, but most often not how to build it.	
+   @Each project has a POM file. The POM file is named pom.xml and should be located in the root directory of we project.
+   
+   eg: <project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		<modelVersion>4.0.0</modelVersion>
+
+		<groupId>com.jenkov</groupId>
+		<artifactId>java-web-crawler</artifactId>
+		<version>1.0.0</version>
+		</project>
+
+
+3-->Explain what a Maven artifact is?
+
+A: @The artifactId element contains the name of the project we are building.
+   @The artifact ID is used as name for a subdirectory under the group ID directory in the Maven repository.
+   @The artifact ID is also used as part of the name of the JAR file produced when building the project	
+   
+4-->List out the dependency scope in Maven?
+
+A: @compile:
+
+	This scope indicates that dependency is available in classpath of project. It is default scope.
+	
+   @provided:
+
+	This scope indicates that dependency is to be provided by JDK or web-Server/Container at runtime.	
+		
+   @test:
+	This scope indicates that the dependency is only available for the test compilation and execution phases
+	
+   @system
+
+    This scope indicates that we have to provide the system path.	
+
+5-->List out what are the build phases in Maven?
+
+A:	prepare-resources
+	validate
+	compile
+	Test
+	package
+	install
+	Deploy
+
+6-->Mention the three build lifecycle of Maven?
+
+A: 	Clean - this phase involves cleaning of the project 
+	Default - this phase handles the complete deployment of the project
+	Site - this phase handles the generating the java documentation of the project.
+
+
+
+
+7-->List out what are the aspects does Maven Manages?
+
+A: Maven handles following aspects,
+
+	Build.
+	Documentation.
+	Reporting.
+	Dependencies.
+	SCMs.
+	Releases.
+	Distribution.
+	Mailing list. 
+
+
+8-->Explain what a Maven Repository is? What are their types?
+
+A: 	@A maven repository is a directory of packaged JAR file with pom.xml file. Maven searches for dependencies in the repositories. There are 3 types of maven repository:
+
+	@Local Repository: Maven local repository is located in we local system. It is created by the maven when we run any maven command
+	@Central Repository: Maven central repository is located on the web. It has been created by the apache maven community itself.
+						The path of central repository is: http://repo1.maven.org/maven2/.
+	@Remote Repository: Maven remote repository is located on the web. Most of libraries can be missing from the central repository such as JBoss library etc, so we need to define remote repository in pom.xml file.	
+
+9-->Explain how we can exclude dependency?
+
+A: 	@it is possible for unwanted dependencies to be included in we project's classpath. 
+	For example, a certain older jar may have security issues or be incompatible with the Java version we're using. 
+	To address this, Maven allows we to exclude specific dependencies
+	
+	@ Exclusions are set on a specific dependency in we POM, and are targeted at a specific groupId and artifactId
+	
+	@Add an <exclusions> element in the <dependency> element by which the problematic jar is included.
+	
+	eg:  <exclusions>
+        <exclusion>  <!-- declare the exclusion here -->
+          <groupId>sample.ProjectB</groupId>
+          <artifactId>Project-B</artifactId>
+        </exclusion>
+      </exclusions> 
+
+10-->	For POM what are the minimum required elements?
+
+A: 	The minimum requirement for a POM are the following:
+
+		project root
+		modelVersion - should be set to 4.0.0
+		groupId - the id of the project's group.
+		artifactId - the id of the artifact (project)
+		version - the version of the artifact under the specified group
+		
+		eg: <project>
+			<modelVersion>4.0.0</modelVersion>
+			<groupId>com.mycompany.app</groupId>
+			<artifactId>my-app</artifactId>
+			<version>1</version>
+			</project>
+
+-----------------------------------------------------------------------------------------------------------------------
+CI/CD
+-----------------------------------------------------------------------------------------------------------------------
+
+1-->What are the fundamental differences between DevOps & Agile?
+
+A: 	devops:
+		@DevOps is a culture that promotes collaboration between Development and Operations Team. This allows deploying code to production faster and in an automated way
+		@DevOps focuses on constant testing and delivery.
+		@Relatively larger team size as it involves all the stake holders.
+	agile:
+		@Agile Methodology involves continuous iteration of development and testing in the SDLC process. 
+		This software development method emphasizes on iterative, incremental, and evolutionary development.
+		@Agile process focusses on constant changes.
+		@Small Team is at the core of Agile. As smaller is the team, the fewe people on it, the faster they can move.	
+		
+2-->What is the need for DevOps?
+
+A:  @DevOps describes a culture and set of processes that bring development and operations teams together to complete software development
+	need for this:
+		Shorter Development Cycles, Faster Innovation
+		Reduced Deployment Failures, Rollbacks, and Time to Recover
+		Improved Communication and Collaboration
+		Increased Efficiencies
+		Reduced Costs and IT Headcount
+		
+3-->What are the advantages of DevOps?
+
+A:	@Improved operational support and faster fixes
+	@Good processes across IT and teams, including automation
+	@Increased team flexibility and agility
+	@Happier, more engaged teams
+	@Cross-skilling and self-improvement
+	@Collaborative working
+	@Respect from senior management
+	
+	
+4-->Explain with a use case where DevOps can be used in industry/ real-life.
+
+A:	eg: @Etsy is a peer-to-peer e-commerce website focused on handmade or vintage items and supplies, as well as unique factory-manufactured items. 
+		@Etsy struggled with slow, painful site updates that frequently caused the site to go down. 
+		@It affected sales for millions of Etsy’s users who sold goods through an online marketplace and risked driving them to the competitor.
+		@With the help of a new technical management team, Etsy transitioned from its waterfall model, 
+		which produced four-hour full-site deployments twice weekly, to a more agile approach. 
+		@Today, it has a fully automated deployment pipeline, and its continuous delivery practices have reportedly resulted in more than 50 deployments a day with fewer disruptions
+
+5-->What are the success factors for Continuous Integration?
+
+A:	@ Risk Mitigation 
+	@Team Communication 
+	@Consistency of Build Process 
+	@Reduced Overhead 
+	
+		
+6-->What are the differences between continuous integration, continuous delivery, and continuous deployment?
+
+A: CI: Developers practicing continuous integration merge their changes back to the main branch as often as possible. 
+		The developer's changes are validated by creating a build and running automated tests against the build
+		
+   CDep: Continuous deployment goes one step further than continuous delivery. 
+		With this practice, every change that passes all stages of we production pipeline is released to we customers. 
+		There's no human intervention, and only a failed test will prevent a new change to be deployed to production.
+		Developers can focus on building software, and they see their work go live minutes after they've finished working on it.		
+
+   CDel: Continuous delivery is an extension of continuous integration to make sure that we can release new changes to we customers quickly in a sustainable way. 
+		 This means that on top of having automated we are testing, we also have automated we release process and we can deploy we application at any point of time by clicking on a button 
+
+7-->What role does the Quality Assurance (QA) team play in DevOps?
+
+A: @QA and testing teams should be part of technical teams. They have to move beyond manual functional testing and should focus their efforts on automation and testing strategies
+   @QA & testing has to move towards leveraging automation tools to automate testing wherever possible
+   @QA should aim to detect a bug at the earliest point in the cycle and also prevent potential bugs from reappearing in the production environment.
+   @QA should make sure that all environments required for testing should be standardized and deployments automated. There is no room for manual testing.
+   
+8-->Describe an efficient workflow for continuous integration
+
+A:	Centralized Workflow:
+		@This flow uses a central repository to serve as the single point-of-entry for all changes to the project. 
+		The default development branch is called master and all changes are committed into this branch.
+		
+		@Developers start by cloning the central repositories in their own local copies of the project. 
+		They edit jobs and commit changes locally. Once the changes are tested, the developer "Push" their local master branch to the central repository
+		
+		@ the central repository represents the official project, so if the local job changes conflicts with upstream commits, 
+		Git will pause the process and give a chance to manually resolve the conflicts. This makes it easy for developers to manage the merges.
+
+10-->What are the best practices for DevOps implementation?
+
+A:	@Evaluate the need to implement DevOps practice
+	@ Put Customer / end-user satisfaction at the center
+	@Don’t jump start, instead, start small and then scale up
+	@Automate wherever possible
+	@Select tools that are compatible with each other
+
+
+
