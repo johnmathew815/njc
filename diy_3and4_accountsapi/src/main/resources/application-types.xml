@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="demo" format="json">
+      <types:shape format="weave" example="examples/accountsMapping-2.json"><![CDATA[%dw 2.0
+
+type demo = Array<{|  id: String,   firstName: String,   lastName: String,   address: String,   postal: String,   country: String,   miles: String,   creationDate: String,   "type": String|}> {"example": "[{\\\"id\\\":\\\"string\\\",\\\"firstName\\\":\\\"string\\\",\\\"lastName\\\":\\\"string\\\",\\\"address\\\":\\\"string\\\",\\\"postal\\\":\\\"string\\\",\\\"country\\\":\\\"string\\\",\\\"miles\\\":\\\"integer\\\",\\\"creationDate\\\":\\\"datetime\\\",\\\"type\\\":\\\"string\\\"}]"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#0cf72af5-58c3-4656-9d3c-9d303cbe4b39">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="demo"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

@@ -1,0 +1,14 @@
+[
+{
+  id: string,
+  firstName: string,
+  lastName: string,
+  address: string,
+  postal: string,
+  country: string,
+  miles: integer,
+  creationDate: datetime,
+  type: string
+
+}
+]
