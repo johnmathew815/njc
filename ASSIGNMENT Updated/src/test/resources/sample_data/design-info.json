@@ -1,0 +1,13 @@
+{
+  "sampleData": {
+    "11c0b44a-93c3-4ddc-942a-80c4e5191869": {
+      "vars-code": "sample_data/unknown.dwl"
+    },
+    "c853f6e4-4250-492d-a13d-8b47e017053e": {
+      "payload": "sample_data/json.json"
+    },
+    "0f3de1ac-532b-4638-b4cd-819ac582c35d": {
+      "payload": "sample_data/json_1.json"
+    }
+  }
+}
