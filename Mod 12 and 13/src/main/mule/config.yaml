@@ -1,0 +1,17 @@
+http:
+  port: "8081"
+
+sfdc:
+  username: "johnmathewphilip10@gmail.com"    
+  pass: "fathima000@"
+  token: "AlN7Kb8HccL5nScxn2SofNjL3"
+  
+file:
+  accountsDir: "C:/JOHN/AnypointStudio-7.5.1-win64/John/MUFundamentals4.2_studentFiles_27jul2019/resources"  
+  
+db:
+  host: "mudb.learn.mulesoft.com"
+  port: "3306"
+  user: "mule"
+  pass: "mule"
+  dbs: "training"
