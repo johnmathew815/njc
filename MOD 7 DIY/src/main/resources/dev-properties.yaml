@@ -1,0 +1,17 @@
+http:
+  port: "8081"
+  host: "localhost"
+  
+  
+httpreq1:
+  port: "80"
+  host: "mu.learn.mulesoft.com"
+  path: "/american/{destination}"
+   
+  
+httpreq2:
+  port: "8081"
+  host: "localhost"
+  path: "/processData"
+   
+        
