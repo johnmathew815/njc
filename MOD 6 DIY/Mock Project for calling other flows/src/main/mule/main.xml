@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<import doc:name="Import" doc:id="1d8712c5-dce7-4cec-9a05-08fa5d5db16d" file="templates.xml" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="7d42d5bd-1c50-412d-bc5d-7b4c780061d5" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mainFlow" doc:id="97726973-002a-4353-8b9d-91db39bca959" >
+		<http:listener doc:name="Listener" doc:id="991ad05c-5cf6-4c16-b565-f1da3dd0cb60" config-ref="HTTP_Listener_config" path="/test"/>
+		<set-payload value="#[[]]" doc:name="Set Payload" doc:id="3d4cee0b-bd89-4f05-aafb-6f4d4b1649b7" />
+		<flow-ref doc:name="Flow Reference" doc:id="7186dfbb-cd42-49cc-ac91-e7df84f8008b" name="validateArray"/>
+	</flow>
+</mule>
