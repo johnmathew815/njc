@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="mainFlow" doc:id="e16b70ea-23ae-42d8-a1fe-cc1b2cc0631b" >
+		<http:listener doc:name="Listener" doc:id="9d0c2d0a-7063-4cea-816f-793b5df24524" config-ref="HTTP_Listener_config" path="/flights_accounts"/>
+		<logger level="INFO" doc:name="Logger" doc:id="185058d3-1502-4406-9274-4d3f3380730b" message='#["before gathering of payloads"]'/>
+		<scatter-gather doc:name="aggregating accounts and flights" doc:id="4d0be2bb-663c-48ed-a395-dc73d4bb2348" >
+			<route >
+				<flow-ref doc:name="toAccountsFlow" doc:id="e23d029d-abb4-4dc4-bacf-7fd89e5643ae" name="accounts"/>
+			</route>
+			<route >
+				<flow-ref doc:name="toFlightsFlow" doc:id="6beabc8d-60e0-4af1-b0af-fe02fbb334f5" name="flights"/>
+			</route>
+		</scatter-gather>
+		<ee:transform doc:name="transforming the payload to json" doc:id="4732d2f0-7ce2-4e57-9df1-ac2eb0f15cd7">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="428a8377-f65a-48c3-86b0-b2d98726058e" message="#[payload]"/>
+		<choice doc:name="Choice" doc:id="6a2c6d21-6f99-436a-ba74-b199cdc9d541" >
+			<when expression='#[(not (isEmpty(payload."0".payload)) and (payload."1".payload.body.listAllFlightsResponse != null))]'>
+				<ee:transform doc:name="if both accounts and flights is not empty" doc:id="4a645a4e-1cda-4025-86aa-e2efd1678fb6" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+    "accounts":{
+        attributes: payload."0".attributes,
+        payload : payload."0".payload
+    },
+
+    "flights": {
+        attributes: payload."1".attributes,
+        payload: payload."1".payload.body.listAllFlightsResponse
+    }
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</when>
+			<when expression='#[((isEmpty(payload."0".payload)) and   (payload."1".payload.body.listAllFlightsResponse != null))]'>
+				<set-payload value='#["accounts is empty"]' doc:name="accounts is empty" doc:id="9c47a5d8-0964-48f7-8f5e-04138e6908e2" />
+			</when>
+			<when expression='#[(((payload."1".payload.body.listAllFlightsResponse) == null) and not (isEmpty(payload."0".payload)))]'>
+				<set-payload value='#["flights is empty"]' doc:name="flights is empty" doc:id="66314ab6-75af-4686-bf28-0a84dc8304ee" />
+			</when>
+			<otherwise >
+				<set-payload value='#["both flights and accounts is empty"]' doc:name="both flights and accounts is empty" doc:id="1fdf9fc0-f943-4111-b727-5fb5380a36e5" />
+			</otherwise>
+		</choice>
+	</flow>
+</mule>
