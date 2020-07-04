@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:ftp="http://www.mulesoft.org/schema/mule/ftp"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ftp http://www.mulesoft.org/schema/mule/ftp/current/mule-ftp.xsd
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd">
+	<flow name="mealsngoFlow" doc:id="e445d5f0-9474-49c7-aaba-aa758e133d73" >
+		<jms:listener doc:name="Listener" doc:id="924a9598-295f-474c-94d2-a059f411262c" config-ref="JMS_Config" destination="${partner2.q}">
+			<jms:response >
+				<jms:properties ><![CDATA[#[{
+	status:  vars.status
+}]]]></jms:properties>
+			</jms:response>
+		</jms:listener>
+		<ftp:write doc:name="Write" doc:id="b237b371-f47b-4894-9487-01803fe8e378" config-ref="Partner2_FTP_Config" path='#["MULEBANK-gc-" ++ attributes.properties.userProperties.UnixEpoch  ++ ".csv"]'>
+			<ftp:content ><![CDATA[#[output application/csv
+---
+payload]]]></ftp:content>
+		</ftp:write>
+		<logger level="INFO" doc:name="Logger" doc:id="8c2f39f8-5b2f-4b82-9a5c-cc31a5d717bf" message='#["successful"]'/>
+		<set-variable value='#["success"]' doc:name="setting success status" doc:id="a022e035-202b-413b-bea6-24f9ef9d41ac" variableName="status"/>
+		<logger level="INFO" doc:name="Logger" doc:id="47f82a46-3627-49e4-8665-a92e8370e02d" />
+		<error-handler >
+			<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="cf7a4199-e881-46ab-92d3-65c3385b9813" type="ANY">
+				<set-variable value="failure" doc:name="setting failure status" doc:id="bfcc2edc-84c4-4c83-8b5f-95e8999c2b5a" variableName="status"/>
+			</on-error-continue>
+		</error-handler>
+	</flow>
+</mule>

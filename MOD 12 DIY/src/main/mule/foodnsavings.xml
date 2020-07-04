@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd">
+	<flow name="foodnsavingsFlow" doc:id="4a3e4206-5124-4d63-abeb-aca73a108072" >
+		<jms:listener doc:name="Listener" doc:id="030a1e77-44a0-43fa-912f-95c50204aa5d" config-ref="JMS_Config" destination="${partner1.q}">
+			<jms:response >
+				<jms:properties ><![CDATA[#[{
+	"status" : vars.status
+}]]]></jms:properties>
+			</jms:response>
+		</jms:listener>
+		<db:bulk-insert doc:name="bulk inserting the whole data to DB" doc:id="4de734ef-1fab-41c8-b116-29e89ee8461a" config-ref="Partner1_Database_Configuration">
+			<db:sql ><![CDATA[insert into Giftcards (number, sourceID, balance, createdOn) values (:number, :sourceID, :balance, :createdOn)]]></db:sql>
+		</db:bulk-insert>
+		<db:select doc:name="checking to see if the data exists after insertion" doc:id="faf6948a-d67c-47e9-8c84-025f049d4708" config-ref="Partner1_Database_Configuration">
+			<db:sql ><![CDATA[select * from Giftcards]]></db:sql>
+		</db:select>
+		<ee:transform doc:name="transforming the data to JSON format" doc:id="b010b23d-5e5f-4f55-a62b-83252dc2b745" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+			<ee:variables />
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="3ae52455-46d1-4034-a1ba-0189ca438b5f" message="#[payload]"/>
+		<set-variable value='#["success"]' doc:name="success message" doc:id="306ea8ba-ccc6-470e-b984-2b43b3f9d184" variableName="status"/>
+		<error-handler >
+			<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="aac7564e-d057-4bc3-b2f0-686414413825" type="ANY">
+				<set-variable value='#["failure"]' doc:name="failure message" doc:id="82339347-48f6-43b5-ba43-36a26c6c2184" variableName="status" />
+			</on-error-continue>
+		</error-handler>
+	</flow>
+</mule>

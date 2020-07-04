@@ -1,0 +1,34 @@
+#Master App Server
+master:
+  fileIn: "C:/Users/John/Desktop/DIY12/input"
+  fileProcessed: "C:/Users/John/Desktop/DIY12/output"
+  fileWrite: "C:/Users/John/Desktop/DIY12"
+  
+  
+#Partner 1 Database
+#Dev will use in-memory Derby Database
+partner1:
+  name: "Food and Savings"
+  q: "foodNsavings"
+  db:
+    url: "jdbc:derby:memory:training"
+    driver: "org.apache.derby.jdbc.EmbeddedDriver"
+
+#Partner 2 FTP Credentials. 
+#Dev will use in-memory FTP server using MockFtpServer Java package. Change the port number here if your local machine is currently using port 9178
+partner2:
+  name: "Meals n Go"
+  q: "mealsNgo"
+  ftp:
+    host: "localhost"
+    port: "9178"
+    username: "user"
+    password: "password"
+    root: "/data/"
+    
+#Partner 3 File Server
+partner3:
+  name: "Online Retail Plus"
+  q: "onlineretailplus"
+
+  fileWrite: "Desktop/partner3/receive"

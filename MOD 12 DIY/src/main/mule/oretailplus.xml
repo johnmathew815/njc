@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd">
+	<file:config name="File_Config2" doc:name="File Config" doc:id="6779289c-4b3c-4ccf-bbc6-592fb181dcec" >
+		<file:connection workingDir="C:\Users\John\Desktop\DIY12" />
+	</file:config>
+	<flow name="oretailplusFlow" doc:id="b9154ba8-5672-4ffc-a0b3-180cdd5b474b" >
+		<jms:listener doc:name="Listener" doc:id="e6d5ac5b-a3ba-4840-bd5a-330209ccfcb1" config-ref="JMS_Config" destination="${partner3.q}">
+			<jms:response >
+				<jms:properties ><![CDATA[#[{
+	"status": vars.status
+}]]]></jms:properties>
+			</jms:response>
+		</jms:listener>
+		<file:write doc:name="Write" doc:id="2fed181c-cc42-4acf-9c3e-b6cf54ed404d" path="#[&quot;MULEBANK-&quot; ++ p('partner3.name') ++ attributes.properties.userProperties.dateTime ++ attributes.properties.userProperties.count  ++ &quot;.csv&quot;]" config-ref="File_Config2">
+			<file:content ><![CDATA[#[output application/csv
+---
+payload]]]></file:content>
+		</file:write>
+		<logger level="INFO" doc:name="Logger" doc:id="def114bf-f8b4-4a8f-95fd-158ac1b4bef6" message='#["successful"]'/>
+		<set-variable value="success" doc:name="success status" doc:id="52f00054-3fc6-4c27-abd5-9a481621efc9" variableName="status"/>
+		<error-handler >
+			<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="13d3da60-0012-489a-8467-b118d772b4ee" type="ANY">
+				<set-variable value="failure" doc:name="failure status" doc:id="cb3dd282-ca28-49df-b99c-fa2f0d4f9812" variableName="status"/>
+			</on-error-continue>
+		</error-handler>
+	</flow>
+</mule>
