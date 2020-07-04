@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:batch="http://www.mulesoft.org/schema/mule/batch"
+	xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+	xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="20acbdbf-68da-4b3f-bfeb-7d6a942c2d7e" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<db:config name="Database_Config1" doc:name="Database Config" doc:id="c5532572-11f5-4b64-b986-6cd1fb1a3600" >
+		<db:my-sql-connection host="localhost" port="3306" user="root" password="john000@" database="training_db" />
+	</db:config>
+	<file:config name="File_Config" doc:name="File Config" doc:id="a9d4a14d-6982-47d1-b1b8-d5c34a6b9164" >
+		<file:connection workingDir="C:\Users\John\Desktop\DIY 13\Output" />
+	</file:config>
+	<flow name="mod_13_diyFlow" doc:id="0b75e526-a7c9-471b-b8d8-74c38af50c78" initialState="started">
+		<scheduler doc:name="Scheduler" doc:id="fd3f5533-4993-4181-a06d-df750ef0a999" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="5" timeUnit="SECONDS"/>
+			</scheduling-strategy>
+		</scheduler>
+		<os:retrieve doc:name="Retrieve" doc:id="c3eb5c4e-65e0-4bdf-bc4c-9b05a04d5953" key="lasttransactionID" target="lasttransactionID">
+			<os:default-value ><![CDATA[0]]></os:default-value>
+		</os:retrieve>
+		<db:select doc:name="Select" doc:id="320d324c-756b-4b69-8c01-1d0810910c17" config-ref="Database_Config">
+			<db:sql ><![CDATA[select * from flights_transactions where transactionID > :lasttransactionID limit 10]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{
+	"lasttransactionID" : vars.lasttransactionID
+}]]]></db:input-parameters>
+		</db:select>
+		<logger level="INFO" doc:name="Logger" doc:id="52d6948c-aa0d-4503-a66c-a904000f7981" message="#[output application/json
+---
+payload]"/>
+		<os:store doc:name="Store" doc:id="d84c7231-78c7-40e6-960e-4792c969ed3f" key="lasttransactionID" failOnNullValue="false">
+					<os:value><![CDATA[#[max(payload.*transactionID)]]]></os:value>
+				</os:store>
+		<logger level="INFO" doc:name="Logger" doc:id="1f03aa38-40a2-4e12-9496-e8e5ae74762b" message="#[payload]"/>
+		<batch:job jobName="mod_13_diyBatch_Job" doc:id="a739d292-9a93-4f70-acde-ae2736a10398" >
+			<batch:process-records >
+				<batch:step name="Batch_Step" doc:id="1c140e79-79db-42de-b8ae-600bd14f2def" >
+					<vm:publish-consume queueName="validate" doc:name="Publish consume" doc:id="debfcc5b-6fd6-4583-a5c8-084097b1440f" config-ref="VM_Config" target="res" timeout="200"/>
+				</batch:step>
+				<batch:step name="Batch_Step1" doc:id="90c85b9e-b277-4448-b2ff-42324efbaa8f" acceptExpression="#[vars.res default false]">
+					<batch:aggregator doc:name="Batch Aggregator" doc:id="04bbc21a-9047-43cb-bf53-d245d4b2df8b" size="10">
+						<file:write doc:name="Write" doc:id="cc7936b9-1153-4b0c-9758-ff8b4c1f5a39" config-ref="File_Config" path="C:\Users\John\Desktop\DIY 13\Output\finalFile.csv" mode="APPEND">
+							<file:content ><![CDATA[#[output application/csv --- payload]]]></file:content>
+						</file:write>
+					</batch:aggregator>
+				</batch:step>
+			</batch:process-records>
+			<batch:on-complete >
+				<logger level="INFO" doc:name="Logger" doc:id="f0a096f0-ec16-4793-811d-f7770523a95a" message="#[payload]"/>
+			</batch:on-complete>
+		</batch:job>
+	</flow>
+	<flow name="mod_13_diyFlow1" doc:id="2bcdd6e1-a9f5-43cc-b94c-fb4db9251a7c" >
+		<vm:listener doc:name="Listener" doc:id="2b773e28-fed9-4eab-bc85-980c03f58fc9" config-ref="VM_Config" queueName="validate"/>
+		<ee:transform doc:name="Transform Message" doc:id="2abed350-8898-4c5a-93b9-30a1d065a4e9" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+if(mod(payload.transactionID as Number,4) == 0)
+	true 
+else
+	false]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
